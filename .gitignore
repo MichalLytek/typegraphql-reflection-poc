@@ -1,0 +1,11 @@
+# node modules
+node_modules
+
+# builded sources
+build
+
+# coverage reports
+coverage
+
+# IntelliJ stuffs
+.idea/
