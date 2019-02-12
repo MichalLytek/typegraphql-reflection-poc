@@ -1,0 +1,16 @@
+{
+  "name": "typegraphql-morph",
+  "private": true,
+  "dependencies": {
+    "@types/node": "^11.9.0",
+    "ts-morph": "^1.0.0",
+    "ts-node-dev": "^1.0.0-pre.32",
+    "typescript": "^3.3.3"
+  },
+  "scripts": {
+    "start": "ts-node-dev --respawn --transpileOnly ./src/transform.ts"
+  },
+  "devDependencies": {
+    "ts-node": "^8.0.2"
+  }
+}
