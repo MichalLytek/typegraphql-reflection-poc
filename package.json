@@ -3,12 +3,14 @@
   "private": true,
   "dependencies": {
     "@types/node": "^11.9.0",
+    "reflect-metadata": "^0.1.13",
     "ts-morph": "^1.0.0",
     "ts-node-dev": "^1.0.0-pre.32",
     "typescript": "^3.3.3"
   },
   "scripts": {
-    "start": "ts-node-dev --respawn --transpileOnly ./src/transform.ts",
+    "start": "ts-node -C ttypescript src/example/index.ts",
+    "dev": "ts-node-dev --respawn --transpileOnly ./src/transform.ts",
     "transform": "ttsc"
   },
   "devDependencies": {

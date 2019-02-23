@@ -1,9 +1,13 @@
-import "reflect-metdata";
+import "reflect-metadata";
 
-import { Field, ObjectType } from "./decorators";
+import { Field, ObjectType } from "../helpers/decorators";
 
 @ObjectType
 export class Sample {
+  @Field
+  // @Reflect.metadata("typegraphql:typeinfo", { nullable: false, isArray: false, type: () => Date })
+  dateField!: Date;
+
   @Field
   stringField!: string;
 
@@ -11,10 +15,16 @@ export class Sample {
   optionalStringField?: string;
 
   @Field
+  undefinableStringField!: string | undefined;
+
+  @Field
   nullableStringField!: string | null;
 
   @Field
   stringArrayField!: string[];
+
+  @Field
+  optionalStringArrayField?: string[];
 
   @Field
   nullableStringArrayField!: Array<string | null>;
@@ -33,4 +43,7 @@ export class Sample {
 
   @Field
   nullableStringArrayPromiseField!: Promise<Array<string | null>>;
+
+  @Field
+  nullableStringNullableArrayPromiseField!: Promise<Array<string | null> | null>;
 }

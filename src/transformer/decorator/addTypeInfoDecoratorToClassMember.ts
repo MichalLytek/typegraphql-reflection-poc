@@ -1,10 +1,11 @@
 import { ts } from "ts-morph";
 
-import createTypeInfoDecorator, { TypeInfo } from "./createTypeInfoDecorator";
+import createTypeInfoDecorator from "./createTypeInfoDecorator";
+import { TypeInfo } from "./TypeInfo";
 
-export default function addTypeInfoDecorator(
-  node: ts.ClassElement,
+export default function addTypeInfoDecoratorToClassMember(
   typeInfo: TypeInfo,
+  node: ts.ClassElement,
 ): ts.ClassElement {
   const classMember = ts.getMutableClone(node);
   const { pos, end } = classMember.decorators!;

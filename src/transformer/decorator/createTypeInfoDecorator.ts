@@ -1,11 +1,6 @@
 import { ts } from "ts-morph";
 
-export interface TypeInfo {
-  // TODO: fill with properties
-  typeText: string;
-  nullable: boolean;
-  isArray: boolean;
-}
+import { TypeInfo } from "./TypeInfo";
 
 export default function createTypeInfoDecorator({ typeText, nullable, isArray }: TypeInfo) {
   return ts.createDecorator(
@@ -15,7 +10,7 @@ export default function createTypeInfoDecorator({ typeText, nullable, isArray }:
         ts.createPropertyAssignment("nullable", ts.createLiteral(nullable)),
         ts.createPropertyAssignment("isArray", ts.createLiteral(isArray)),
         ts.createPropertyAssignment(
-          "type",
+          "getType",
           ts.createArrowFunction(
             undefined,
             undefined,
