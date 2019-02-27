@@ -1,31 +1,25 @@
-import { ts, createWrappedNode, CreateWrappedNodeOptions } from "ts-morph";
+import { ts, createWrappedNode } from "ts-morph";
 
 import addTypeInfoDecoratorToClassMember from "./decorator/addTypeInfoDecoratorToClassMember";
 import getTypeInfo from "./type-detection/getTypeInfo";
 
-export default (program: ts.Program, pluginOptions: {}) => {
+export default (program: ts.Program) => {
   const typeChecker = program.getTypeChecker();
   return (ctx: ts.TransformationContext) => {
     return (sourceFile: ts.SourceFile) => {
-      const wrappedNodeOptions: CreateWrappedNodeOptions = {
-        sourceFile,
-        typeChecker,
-      };
       function visitor(node: ts.Node): ts.Node {
         if (ts.isClassDeclaration(node)) {
-          const classNodeWrapper = createWrappedNode(node, wrappedNodeOptions);
-          // console.log(classNodeWrapper.getName());
           const classNode = ts.getMutableClone(node);
           const { pos, end } = classNode.members;
           classNode.members = Object.assign(
             classNode.members.map(member => {
               if (ts.isPropertyDeclaration(member)) {
-                const memberNode = createWrappedNode(member, wrappedNodeOptions);
-                // console.log("  " + memberNode.getName());
-                // console.log("    " + memberNode.getType().getText());
                 if (member.decorators) {
+                  const memberNode = createWrappedNode(member, {
+                    sourceFile,
+                    typeChecker,
+                  });
                   const typeInfo = getTypeInfo(memberNode.getType());
-                  // console.log("    ", typeInfo);
                   return addTypeInfoDecoratorToClassMember(typeInfo, member);
                 }
               }

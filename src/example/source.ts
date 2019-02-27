@@ -5,7 +5,6 @@ import { Field, ObjectType } from "../helpers/decorators";
 @ObjectType
 export class Sample {
   @Field
-  // @Reflect.metadata("typegraphql:typeinfo", { nullable: false, isArray: false, type: () => Date })
   dateField!: Date;
 
   @Field

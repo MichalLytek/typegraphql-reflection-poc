@@ -1,5 +1,5 @@
 export interface TypeMetadata {
   getType: () => Function;
-  nullable: boolean | "items" | "itemsAndArray";
+  nullable: boolean | "items" | "itemsAndList";
   isArray: boolean;
 }

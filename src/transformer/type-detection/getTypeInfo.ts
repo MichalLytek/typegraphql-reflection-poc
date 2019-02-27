@@ -1,6 +1,6 @@
 import { ts, Type } from "ts-morph";
 
-import { TypeInfo } from "../decorator/TypeInfo";
+import { TypeInfo } from "./TypeInfo";
 import isTypePromise from "./isTypePromise";
 
 export default function getTypeInfo(
@@ -24,7 +24,7 @@ export default function getTypeInfo(
     if (unionSubTypes.some(it => it.isUndefined() || it.isNull())) {
       if (typeInfo.isArray) {
         if (typeInfo.nullable) {
-          typeInfo.nullable = "itemsAndArray";
+          typeInfo.nullable = "itemsAndList";
         } else {
           typeInfo.nullable = "items";
         }

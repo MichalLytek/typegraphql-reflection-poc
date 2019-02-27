@@ -1,7 +1,7 @@
 import { ts } from "ts-morph";
 
 import createTypeInfoDecorator from "./createTypeInfoDecorator";
-import { TypeInfo } from "./TypeInfo";
+import { TypeInfo } from "../type-detection/TypeInfo";
 
 export default function addTypeInfoDecoratorToClassMember(
   typeInfo: TypeInfo,

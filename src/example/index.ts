@@ -1,21 +1,16 @@
-import MetadataStorage from "../helpers/MetadataStorage";
-import readPropertyTypeInfo from "../helpers/readPropertyTypeInfo";
 import { Sample } from "./source";
+import MetadataStorage from "../helpers/MetadataStorage";
+import getPropertyTypeInfo from "../helpers/getPropertyTypeInfo";
+import createObjectTypeString from "../sdl/createObjectTypeString";
 
 // dummy call to trigger import and decorators evaluation
 () => Sample;
 
 MetadataStorage.objectTypes.forEach(objectType => {
-  console.log(objectType.name);
-  MetadataStorage.fields
-    .filter(it => it.target === objectType)
-    .forEach(field => {
-      console.log(" ", field.propertyKey);
-      const { isArray, nullable, getType } = readPropertyTypeInfo(objectType, field.propertyKey)!;
-      console.log("   ", {
-        isArray,
-        nullable,
-        type: getType().name,
-      });
-    });
+  const objectTypeFields = MetadataStorage.fields.filter(it => it.target === objectType);
+  const objectTypeFieldsTypes = objectTypeFields.map(field => ({
+    type: getPropertyTypeInfo(objectType, field.propertyKey)!,
+    propertyKey: field.propertyKey as string,
+  }));
+  console.log(createObjectTypeString(objectType.name, objectTypeFieldsTypes) + "\r\n");
 });

@@ -1,5 +1,5 @@
 export interface TypeInfo {
   typeText: string;
-  nullable: boolean | "items" | "itemsAndArray";
+  nullable: boolean | "items" | "itemsAndList";
   isArray: boolean;
 }

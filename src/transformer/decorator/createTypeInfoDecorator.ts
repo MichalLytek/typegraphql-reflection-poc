@@ -1,6 +1,6 @@
 import { ts } from "ts-morph";
 
-import { TypeInfo } from "./TypeInfo";
+import { TypeInfo } from "../type-detection/TypeInfo";
 
 export default function createTypeInfoDecorator({ typeText, nullable, isArray }: TypeInfo) {
   return ts.createDecorator(
