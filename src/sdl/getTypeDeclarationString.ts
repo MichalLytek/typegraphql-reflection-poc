@@ -1,4 +1,4 @@
-import { TypeMetadata } from "../helpers/TypeMetadata";
+import { TypeMetadata } from "../transformer/metadata/TypeMetadata";
 
 export default function getTypeDeclarationString(type: TypeMetadata): string {
   let typeString = type.getType().name;

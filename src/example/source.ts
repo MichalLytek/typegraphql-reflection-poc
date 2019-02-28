@@ -1,5 +1,3 @@
-import "reflect-metadata";
-
 import { Field, ObjectType } from "../helpers/decorators";
 
 @ObjectType

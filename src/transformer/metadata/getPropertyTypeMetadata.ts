@@ -1,6 +1,6 @@
 import { TypeMetadata } from "./TypeMetadata";
 
-export default function getPropertyTypeInfo(
+export default function getPropertyTypeMetadata(
   classType: Function,
   propertyKey: string | symbol,
 ): TypeMetadata | undefined {

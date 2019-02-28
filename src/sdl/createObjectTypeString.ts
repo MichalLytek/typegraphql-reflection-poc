@@ -1,13 +1,13 @@
-import { TypeMetadata } from "../helpers/TypeMetadata";
+import { TypeMetadata } from "../transformer/metadata/TypeMetadata";
 import getTypeDeclarationString from "./getTypeDeclarationString";
 
-interface FieldInfo {
-  type: TypeMetadata;
+export interface FieldInfo {
+  typeMetadata: TypeMetadata;
   propertyKey: string;
 }
 
-function createFieldTypeString({ propertyKey, type }: FieldInfo) {
-  return `  ${propertyKey}: ${getTypeDeclarationString(type)}`;
+function createFieldTypeString({ propertyKey, typeMetadata }: FieldInfo) {
+  return `  ${propertyKey}: ${getTypeDeclarationString(typeMetadata)}`;
 }
 
 export default function createObjectTypeString(typeName: string, fields: Array<FieldInfo>) {
