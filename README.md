@@ -51,3 +51,9 @@ type Sample {
 You can run the example by `npm start` - it will run a `ts-node` with a special `ttypescript` compiler flag (`ts-node -C ttypescript src/example/index.ts`) that allows to apply the plugins defined in `tsconfig.json` during the TS files transpilation.
 
 The transform plugin files are located in `src/transformer` directory. The example code (class source file and reading the metadata) are in `src/example` folder and the related supporting code is in `src/helpers` dir. In `src/sdl` you can find some simple helpers for creating GraphQL type SDL string for this demo purposes.
+
+## Further work
+
+This proof of concept supports only basic subset of types - primitive types, array, nullability.
+
+There is a lot of work to do next, both on the reflection plugin side and the TypeGraphQL core side.
