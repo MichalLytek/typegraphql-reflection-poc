@@ -57,3 +57,7 @@ The transform plugin files are located in `src/transformer` directory. The examp
 This proof of concept supports only basic subset of types - primitive types, array, nullability.
 
 There is a lot of work to do next, both on the reflection plugin side and the TypeGraphQL core side.
+
+If you like this idea of making TypeGraphQL easier to use without all the additional boilerplate, please consider supporting the project and our development efforts!
+
+[![](https://opencollective.com/typegraphql/donate/button.png?color=blue)](https://opencollective.com/typegraphql)
